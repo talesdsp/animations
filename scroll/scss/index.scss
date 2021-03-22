@@ -1,0 +1,144 @@
+@import '_inputRange';
+
+* {
+  margin    : 0;
+  padding   : 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x     : hidden;
+  position       : relative;
+  display        : flex;
+  flex-direction : column;
+  background     : #7A419B;
+  min-height     : 100vh;
+  background     : linear-gradient(135deg, #7c1599 0%, #921099 48%, #7e4ae8 100%);
+  background-size: cover;
+  align-items    : center;
+  justify-content: center;
+}
+
+.player {
+  max-width : 100vw;
+  border    : 5px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position  : relative;
+  font-size : 0;
+  overflow  : hidden;
+}
+
+/* This css is only applied when fullscreen is active. */
+.player:fullscreen {
+  max-width: none;
+  width    : 100%;
+}
+
+.player:-webkit-full-screen {
+  max-width: none;
+  width    : 100%;
+}
+
+.player__video {
+  width: 100%;
+}
+
+.player__button {
+  background : none;
+  border     : 0;
+  line-height: 1;
+  padding    : 10px 0;
+  width      : 55px;
+  color      : white;
+  text-align : center;
+  outline    : 0;
+  cursor     : pointer;
+}
+
+.player__button:focus {
+  border-color: #ffc600;
+}
+
+
+.player__controls {
+  display        : flex;
+  position       : absolute;
+  flex-direction : column;
+  bottom         : 0;
+  left           : 0;
+  right          : 0;
+  justify-content: center;
+  transform      : translateY(100%) translateY(5px);
+  transition     : all .3s;
+  background     : rgba(0, 0, 0, 0.4);
+}
+
+.player:hover .player__controls {
+  transform: translateY(0);
+}
+
+.player:hover .progress {
+  height: 8px;
+}
+
+.row {
+  width         : 100%;
+  flex-direction: row;
+  display       : flex;
+  pointer-events: all;
+}
+
+.progress {
+  display   : flex;
+  width     : 100%;
+  position  : relative;
+  height    : 3px;
+  transition: height 0.3s;
+  background: rgba(0, 0, 0, 0.1);
+  cursor    : pointer;
+}
+
+.progress__filled {
+  width     : 100%;
+  background: #ffc600;
+  flex      : 0;
+}
+
+.progress__buffering {
+  position  : absolute;
+  top       : 0;
+  left      : 0;
+  width     : 100%;
+  background: red;
+  flex      : 0;
+}
+
+.context-menu {
+  --px          : 0;
+  --py          : 0;
+  position      : absolute;
+  width         : 200px;
+  background    : #222;
+  display       : flex;
+  flex-direction: column;
+  opacity       : 0;
+  pointer-events: none;
+  top           : 0;
+  left          : 0;
+  color         : #fff;
+  border        : 1px solid #444;
+
+  &.visible {
+    transform     : translate(var(--px), var(--py));
+    opacity       : 1;
+    pointer-events: all;
+  }
+
+  >* {
+    padding: 12px;
+
+    &:hover {
+      background-color: #444;
+    }
+  }
+}

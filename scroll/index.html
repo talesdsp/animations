@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.min.css" />
+  </head>
+  <body>
+    <div class="player">
+      <video
+        class="player__video viewer"
+        src="652333414.mp4"
+        controlslist="nodownload"
+        poster="reindeer.png"
+      >
+        Este browser não é compativel, mude para outro assistir esse vídeo
+      </video>
+
+      <div class="player__controls">
+        <div class="progress">
+          <div class="progress__filled"></div>
+        </div>
+
+        <div class="row">
+          <button class="player__button toggle" title="Toggle Play">►</button>
+          <input
+            type="range"
+            name="volume"
+            class="player__slider"
+            min="0"
+            max="1"
+            step="0.05"
+            value="1"
+          />
+
+          <select class="playback-rate">
+            <option value="0.25">0.25</option>
+            <option value="0.5">0.5</option>
+            <option value="0.75">0.75</option>
+            <option value="1" selected>1</option>
+            <option value="1.25">1.25</option>
+            <option value="1.5">1.50</option>
+            <option value="1.75">1.75</option>
+            <option value="2">2</option>
+          </select>
+          <button data-skip="-10" class="player__button">« 10s</button>
+          <button data-skip="10" class="player__button">10s »</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="context-menu">
+      <span>loop</span>
+      <span>statistics</span>
+      <span>report</span>
+    </div>
+
+    <div style="height: 300vh; width: 100vw">oi</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+
+    <script src="index.js"></script>
+    <script>
+      VideoPlayer()
+    </script>
+  </body>
+</html>
